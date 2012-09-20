@@ -108,6 +108,9 @@
           i       = 0;
       for (; i<length; i++) {
         data[fields[i].getAttribute(ATTRIBUTE_FIELDS)] = fields[i].value;
+        if (data.setAttribute) {
+          data.setAttribute(fields[i].getAttribute(ATTRIBUTE_FIELDS), fields[i].value);
+        }        
       }
       return data;
     },
@@ -153,7 +156,7 @@
         }
         
         fieldName = field.getAttribute(ATTRIBUTE_FIELDS);
-        newValue  = this.elementToChange ? (this.elementToChange[fieldName] || "") : field.defaultValue;
+        newValue  = this.elementToChange ? (this.elementToChange.getAttribute(fieldName) || "") : field.defaultValue;
         field.value = newValue;
       }
     },

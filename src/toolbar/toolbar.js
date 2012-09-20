@@ -85,6 +85,10 @@
           that.editor.fire("show:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
+        dialog.observe("edit", function(attributes) {
+          that.editor.fire("edit:dialog");
+        });
+
         dialog.observe("save", function(attributes) {
           if (caretBookmark) {
             that.composer.selection.setBookmark(caretBookmark);
